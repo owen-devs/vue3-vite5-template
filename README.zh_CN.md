@@ -21,7 +21,7 @@
 
 ## 💡 特性
 
--   ⚡ [vue3](https://github.com/vuejs/),[vite](https://github.com/vitejs/vite),[pnpm](https://github.com/pnpm/pnpm),[nodejs](https://github.com/nodejs/node) 作为开发工具，提供更快的开发体验
+-   ⚡ [vue3](https://github.com/vuejs/),[vite5](https://github.com/vitejs/vite),[pnpm](https://github.com/pnpm/pnpm),[nodejs](https://github.com/nodejs/node) 作为开发工具，提供更快的开发体验
 -   🐳 [vue3](https://github.com/vuejs/) API自动按需导入
 -   🌈 [sass](https://github.com/sass/sass) 作为 css 预处理器
 -   ✨ [animate.css](https://github.com/animate-css/animate.css) 作为动画库
