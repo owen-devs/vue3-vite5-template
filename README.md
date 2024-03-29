@@ -4,17 +4,18 @@ This template should help get you started developing with Vue 3 in Vite.
 
 ## Versions
 
-![](https://img.shields.io/badge/vite-^4.4.11-646CFF?logo=vite)
-![](https://img.shields.io/badge/vue-^3.3.4-4FC08D?logo=vuedotjs)
-![](https://img.shields.io/badge/vue--router-^4.2.5-4FC08D?logo=vuedotjs)
+![](https://img.shields.io/badge/nodejs-^20.10.0-339933?logo=nodedotjs)
+![](https://img.shields.io/badge/vite-^5.1.6-646CFF?logo=vite)
+![](https://img.shields.io/badge/vue-^3.4.21-4FC08D?logo=vuedotjs)
+![](https://img.shields.io/badge/vue--router-^4.3.0-4FC08D?logo=vuedotjs)
 ![](https://img.shields.io/badge/pinia-^2.1.7-4FC08D?logo=vuedotjs)
 ![](https://img.shields.io/badge/vueuse-^10.6.1-4FC08D?logo=vuedotjs)
-![](https://img.shields.io/badge/element--plus-^2.1.7-409eff?logo=element)
+![](https://img.shields.io/badge/element--plus-^2.4.2-409eff?logo=element)
 ![](https://img.shields.io/badge/axios-^1.6.2-5a29e4?logo=axios)
 ![](https://img.shields.io/badge/unocss-^0.57.7-333333?logo=unocss)
 ![](https://img.shields.io/badge/animate.css-^4.1.1-351c75)
 ![](https://img.shields.io/badge/sass-^1.69.5-CC6699?logo=sass)
-![](https://img.shields.io/badge/typescript-~5.2.0-3178C6?logo=typescript)
+![](https://img.shields.io/badge/typescript-~5.4.0-3178C6?logo=typescript)
 
 ![visitors](https://visitor-badge.laobi.icu/badge?page_id=w461662596.vue3-template)
 
@@ -35,7 +36,7 @@ This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+[VSCode](https://code.visualstudio.com/) + [vue-official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
 ## Type Support for `.vue` Imports in TS
 
