@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+  <g id="空间工具" transform="translate(-178 -130)">
+    <rect id="矩形_797" data-name="矩形 797" width="28" height="28" transform="translate(178 130)" fill="rgba(255,64,64,0.31)" opacity="0"/>
+    <path id="路径_5" data-name="路径 5" d="M3.546-14v2.275L0-15.225l3.546-3.5v2.275H6V-14Z" transform="translate(181 159.725)" fill="#4c4c4b" fill-rule="evenodd"/>
+    <path id="路径_6" data-name="路径 6" d="M2.454-14v2.275L6-15.225l-3.546-3.5v2.275H0V-14Z" transform="translate(197 159.725)" fill="#4c4c4b" fill-rule="evenodd"/>
+    <rect id="矩形_13" data-name="矩形 13" width="2" height="22" transform="translate(188 133)" fill="#4c4c4b"/>
+    <rect id="矩形_16" data-name="矩形 16" width="2" height="22" transform="translate(194 133)" fill="#4c4c4b"/>
+  </g>
+</svg>

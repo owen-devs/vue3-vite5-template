@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+  <g id="用户任务" transform="translate(-3674 -1933)">
+    <rect id="矩形_784" data-name="矩形 784" width="28" height="28" transform="translate(3674 1933)" fill="rgba(255,64,64,0.31)" opacity="0"/>
+    <g id="用户任务-2" data-name="用户任务" transform="translate(3677 1938)" fill="none" stroke="#4c4c4b" stroke-linejoin="round" stroke-width="2">
+      <rect width="22" height="18" stroke="none"/>
+      <rect x="1" y="1" width="20" height="16" fill="none"/>
+    </g>
+    <path id="路径_1696" data-name="路径 1696" d="M125.809-50.286a2.871,2.871,0,0,1-2.857-2.857A2.871,2.871,0,0,1,125.809-56a2.871,2.871,0,0,1,2.857,2.857A2.871,2.871,0,0,1,125.809-50.286ZM129.619-46H122v-.952a2.392,2.392,0,0,1,2.381-2.381h2.857a2.392,2.392,0,0,1,2.381,2.381Z" transform="translate(3562 1998)" fill="#4c4c4b" fill-rule="evenodd"/>
+  </g>
+</svg>

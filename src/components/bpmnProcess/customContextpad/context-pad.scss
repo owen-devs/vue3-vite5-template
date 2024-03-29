@@ -1,0 +1,10 @@
+.canvas-content-box{
+    ::v-deep{
+        .djs-context-pad{
+            .entry{
+                background-color:transparent;
+            }
+        }
+    }
+}
+

@@ -1,0 +1,6 @@
+@import './css-vars';
+html.dark {
+    body {
+        background-color: var(--bg-color);
+    }
+}

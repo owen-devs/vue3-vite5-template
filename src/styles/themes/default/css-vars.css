@@ -1,0 +1,14 @@
+/**
+全局主题变量
+**/
+html {
+    --el-color-primary: #409eff;
+}
+html body {
+}
+html .el-button {
+}
+html .el-card {
+}
+html .el-empty {
+}

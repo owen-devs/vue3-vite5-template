@@ -1,0 +1,25 @@
+.el-overlay.dialog-fade-enter-active {
+    animation-duration: 0.6s;
+
+    .el-overlay-dialog {
+        animation-duration: 0.6s;
+    }
+
+    .el-dialog {
+        animation-name: backInUp;
+        animation-duration: 0.6s;
+    }
+}
+
+.el-overlay.dialog-fade-leave-active {
+    animation-duration: 0.6s;
+
+    .el-overlay-dialog {
+        animation-duration: 0.6s;
+    }
+
+    .el-dialog {
+        animation-name: backOutDown;
+        animation-duration: 0.6s;
+    }
+}

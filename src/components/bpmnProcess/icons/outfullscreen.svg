@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+  <g id="退出全屏" transform="translate(-3845 -2154)">
+    <rect id="矩形_793" data-name="矩形 793" width="28" height="28" transform="translate(3845 2154)" fill="rgba(255,64,64,0.31)" opacity="0"/>
+    <path id="退出全屏-2" data-name="退出全屏" d="M5-38v5H3.333v-3.333H0V-38Zm8.333,1.667V-33H11.667v-5h5v1.667ZM5-43H0v-1.667H3.333V-48H5Zm8.333-1.667h3.333V-43h-5v-5h1.667Z" transform="translate(3851 2209)" fill="#343a40" fill-rule="evenodd"/>
+  </g>
+</svg>
