@@ -28,18 +28,18 @@ export function setURLSearchParams(urlString: string, params: any) {
 
 /**
  * 合并URL字符串
- * @param { string[] } ...argments 可变参数: URL字符串参数
+ * @param { string[] } ...urls 可变参数: URL字符串参数
  * @returns { string } 合并后的URL字符串
  */
-export function joinURLString() {
-    let baseUrl = arguments[0]
-    for (let i = 1; i < arguments.length; i++) {
-        if (baseUrl.endsWith('/') && arguments[i].startsWith('/')) {
-            baseUrl += arguments[i].slice(1)
-        } else if (baseUrl.endsWith('/') || arguments[i].startsWith('/')) {
-            baseUrl += arguments[i]
+export function joinURLString(...urls: string[]): string {
+    let baseUrl = urls[0]
+    for (let i = 1; i < urls.length; i++) {
+        if (baseUrl.endsWith('/') && urls[i].startsWith('/')) {
+            baseUrl += urls[i].slice(1)
+        } else if (baseUrl.endsWith('/') || urls[i].startsWith('/')) {
+            baseUrl += urls[i]
         } else {
-            baseUrl += '/' + arguments[i]
+            baseUrl += '/' + urls[i]
         }
     }
     return baseUrl
