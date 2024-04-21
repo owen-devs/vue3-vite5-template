@@ -10,3 +10,4 @@ declare interface ResultVo {
     msg: string
     result: Object
 }
+

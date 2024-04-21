@@ -12,6 +12,7 @@ import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
 import UnoCSS from 'unocss/vite'
 import legacy from '@vitejs/plugin-legacy'
+import { generateConfig } from './vitePlugins/generateConfig'
 import './src/utils/origins.ts'
 
 // https://vitejs.dev/config/
@@ -113,7 +114,8 @@ export default defineConfig(({ command, mode }) => {
             }),
             legacy({
                 targets: ['chrome 63', 'defaults', 'not IE 11']
-            })
+            }),
+            generateConfig()
         ],
         resolve: {
             alias: {
