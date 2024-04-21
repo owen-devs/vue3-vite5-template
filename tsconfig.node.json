@@ -1,7 +1,6 @@
 {
     "extends": "@tsconfig/node20/tsconfig.json",
     "include": [
-        "vitePlugins/*",
         "vite.config.*",
         "vitest.config.*",
         "cypress.config.*",

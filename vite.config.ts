@@ -12,13 +12,12 @@ import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
 import UnoCSS from 'unocss/vite'
 import legacy from '@vitejs/plugin-legacy'
-import { generateConfig } from './vitePlugins/generateConfig'
-import './src/utils/origins.ts'
+import { formatDateTime } from './src/utils'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
     const env = loadEnv(mode, process.cwd(), '')
-    const timestamp = new Date().Format('yyyyMMddhhmmss')
+    const timestamp = formatDateTime(new Date(), 'yyyyMMddHHmmss')
 
     return {
         server: {
