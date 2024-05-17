@@ -12,12 +12,12 @@ import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
 import UnoCSS from 'unocss/vite'
 import legacy from '@vitejs/plugin-legacy'
-import { formatDateTime } from './src/utils'
+import { useFormat } from './src/composables/useFormat'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
     const env = loadEnv(mode, process.cwd(), '')
-    const timestamp = formatDateTime(new Date(), 'yyyyMMddHHmmss')
+    const timestamp = useFormat(new Date(), 'YYYYMMDDHHmmss')
 
     return {
         server: {
@@ -79,7 +79,7 @@ export default defineConfig(({ command, mode }) => {
             AutoImport({
                 resolvers: [ElementPlusResolver()],
                 imports: ['vue', '@vueuse/core', 'vue-router', 'pinia'],
-                dirs: ['src/stores', 'src/composables', 'src/types/utilities.d'],
+                dirs: ['src/stores', 'src/composables', 'src/types/utilities.d', 'src/utils'],
                 dts: 'src/types/auto-import.d.ts',
                 vueTemplate: true
             }),

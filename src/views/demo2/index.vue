@@ -49,7 +49,6 @@
 </template>
 
 <script lang="ts" setup>
-import { download } from '@/utils/download'
 const { pageSize, pageNo, total } = usePagination()
 
 //	const theme = ref(true)

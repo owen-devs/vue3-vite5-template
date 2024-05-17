@@ -17,7 +17,7 @@ export function useTimeNodes(
     }
 
     const getNodeTimes = (date: Date): string => {
-        return useFormatDateTime(date, fmt)
+        return useFormat(date, fmt)
     }
 
     const addTimes = (date: Date): Date => {

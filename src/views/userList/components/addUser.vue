@@ -75,7 +75,7 @@ const props = defineProps({
 const showDrawer = ref(true)
 const direction = 'rtl'
 const title = computed(() => (props.type === 'create' ? '新建用户' : '编辑用户'))
-const formRef = ref(null)
+const formRef: Ref = ref(null)
 
 const forms = ref({
     userId: '',
@@ -118,7 +118,7 @@ const getDetail = () => {
 }
 
 const handleSubmit = () => {
-    formRef?.value.validate((valid: boolean) => {
+    formRef.value.validate((valid: boolean) => {
         if (valid) {
             if (props.type === 'update' && forms.value.userId) {
                 updateUser(forms.value).then((res) => {

@@ -70,7 +70,7 @@
 
 <script lang="ts" setup>
 import TestDefineModel from './components/TestDefineModel.vue'
-import { download } from '@/utils/download'
+
 const { pageSize, pageNo, total } = usePagination()
 
 //	const theme = ref(true)

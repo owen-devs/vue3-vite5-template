@@ -1,5 +1,3 @@
-import { request } from '@/utils/request'
-
 export function getCurrentUser(params: Object): Promise<any> {
     return request({
         url: '/user/getCurrentUser',

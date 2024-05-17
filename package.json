@@ -16,7 +16,7 @@
         "@vueuse/core": "^10.6.1",
         "animate.css": "^4.1.1",
         "axios": "^1.6.2",
-        "element-plus": "^2.4.2",
+        "element-plus": "^2.7.3",
         "pinia": "^2.1.7",
         "rollup-plugin-visualizer": "^5.9.3",
         "terser": "^5.26.0",

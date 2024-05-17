@@ -11,3 +11,11 @@ declare interface ResultVo {
     result: Object
 }
 
+declare interface HTMLElement {
+    new (): HTMLElement
+    prototype: HTMLElement
+}
+
+declare interface IterableObject {
+    [key: string | number]: any
+}

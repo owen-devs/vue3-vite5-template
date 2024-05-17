@@ -48,7 +48,7 @@ const request = createService({
     timeout: 35000
 })
 
-const download = createService({
+const downloadRequest = createService({
     baseURL: import.meta.env.VITE_BASE_API,
     responseType: 'arraybuffer',
     headers: { 'content-type': 'application/x-www-form-urlencoded' },
@@ -56,4 +56,4 @@ const download = createService({
     timeout: 0
 })
 
-export { request, download }
+export { request, downloadRequest }
