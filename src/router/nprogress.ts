@@ -1,8 +1,7 @@
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
-
-const { VITE_APP_TITLE } = useEnvs()
 //虚拟加载进度条
+const { VITE_APP_TITLE } = useEnvs()
 export function nprogress(router: any) {
     router.beforeEach((to, from, next) => {
         if (to.path !== from.path) {

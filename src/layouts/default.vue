@@ -2,7 +2,7 @@
     <el-container class="w-100vw h-100vh">
         <el-aside
             :width="asideWidth"
-            class="flex flex-col overflow-auto side-bar transition-all ease-in-out duration-300"
+            class="flex flex-col overflow-auto side-bar transition-all ease-in-out duration-300 bg-sidebar"
         >
             <logo />
             <side-bar class="flex-1" />
@@ -30,7 +30,7 @@ import appMain from './components/appMain'
 
 const collapseStore = useCollapseStore()
 
-const asideWidth = computed(() => (collapseStore.isCollapse ? '64px' : '300px'))
+const asideWidth = computed(() => (collapseStore.isCollapse ? '64px' : '280px'))
 
 useEventListener(
     'resize',

@@ -1,5 +1,5 @@
 <template>
-    <div class="p-1em flex items-center">
+    <div class="h-60px flex items-center bg-sidebar">
         <el-button @click="changeCollapse" class="mr-0.5em" link>
             <el-icon class="!text-1.5em" :title="collapseStore.isCollapse ? '展开' : '收起'">
                 <i
@@ -7,14 +7,17 @@
                         'i-ri-indent-decrease': !collapseStore.isCollapse,
                         'i-ri-indent-increase': collapseStore.isCollapse
                     }"
+                    class="c-bg2"
                 />
             </el-icon>
         </el-button>
-        <Breadcrumb />
+        <Breadcrumb class="flex-1" />
+        <UserMenus />
     </div>
 </template>
-
 <script lang="ts" setup>
+import UserMenus from './components/userMenus.vue'
+
 const collapseStore = useCollapseStore()
 
 const changeCollapse = () => {

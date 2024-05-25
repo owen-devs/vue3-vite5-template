@@ -5,9 +5,11 @@ export async function getRoutesByMenu() {
     const list = res?.list || []
     return filterRoutes(list)
 }
-
+/**
+ * 接口获取的动态菜单数据，均为扁平数据
+ * @param list
+ * @returns
+ */
 function filterRoutes(list: any[]) {
-    return list.map((v) => {
-        return {}
-    })
+    return list.filter((f) => f?.meta?.hidden != true)
 }

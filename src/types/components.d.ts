@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     BpmnProcess: typeof import('./../components/bpmnProcess/index.vue')['default']
     Breadcrumb: typeof import('./../components/Breadcrumb/index.vue')['default']
+    'Breadcrumb.bak': typeof import('./../components/Breadcrumb.bak/index.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
     ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
@@ -39,11 +40,12 @@ declare module 'vue' {
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
+    InfiniteMenus: typeof import('./../components/InfiniteMenus/index.vue')['default']
     Operations: typeof import('./../components/Operations.vue')['default']
     PropertiesPanel: typeof import('./../components/bpmnProcess/properties-panel/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SubMenuItem: typeof import('./../components/SubMenuItem.vue')['default']
+    SubMenuItem: typeof import('./../components/InfiniteMenus/SubMenuItem.vue')['default']
   }
   export interface ComponentCustomProperties {
     vLoading: typeof import('element-plus/es')['ElLoadingDirective']
