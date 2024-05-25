@@ -6,5 +6,6 @@ export const useCollapseStore = defineStore('collapseStore', {
         setCollapse(bool: boolean) {
             this.isCollapse = bool
         }
-    }
+    },
+    persist: true
 })

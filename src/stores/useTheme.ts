@@ -29,5 +29,6 @@ export const useThemeStore = defineStore('theme', {
     },
     actions: {
         setTheme(name) {}
-    }
+    },
+    persist: true
 })
