@@ -53,6 +53,7 @@
         "unplugin-vue-components": "^0.25.2",
         "vite": "^5.1.6",
         "vite-plugin-pages": "^0.32.0-beta.0",
+        "vite-plugin-resolve-externals": "^0.2.2",
         "vite-plugin-top-level-await": "^1.4.1",
         "vite-plugin-vue-devtools": "^7.0.18",
         "vite-plugin-vue-layouts": "^0.11.0",

@@ -7,13 +7,12 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    BpmnProcess: typeof import('./../components/bpmnProcess/index.vue')['default']
     Breadcrumb: typeof import('./../components/Breadcrumb/index.vue')['default']
-    'Breadcrumb.bak': typeof import('./../components/Breadcrumb.bak/index.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
     ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
     ElButton: typeof import('element-plus/es')['ElButton']
+    ElCascader: typeof import('element-plus/es')['ElCascader']
     ElContainer: typeof import('element-plus/es')['ElContainer']
     ElDescriptions: typeof import('element-plus/es')['ElDescriptions']
     ElDescriptionsItem: typeof import('element-plus/es')['ElDescriptionsItem']
@@ -42,7 +41,6 @@ declare module 'vue' {
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     InfiniteMenus: typeof import('./../components/InfiniteMenus/index.vue')['default']
     Operations: typeof import('./../components/Operations.vue')['default']
-    PropertiesPanel: typeof import('./../components/bpmnProcess/properties-panel/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SubMenuItem: typeof import('./../components/InfiniteMenus/SubMenuItem.vue')['default']

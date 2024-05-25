@@ -11,6 +11,7 @@ import { visualizer } from 'rollup-plugin-visualizer'
 import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
 import UnoCSS from 'unocss/vite'
+import topLevelAwait from 'vite-plugin-top-level-await'
 import legacy from '@vitejs/plugin-legacy'
 import { useFormat } from './src/composables/useFormat'
 
@@ -113,7 +114,8 @@ export default defineConfig(({ command, mode }) => {
             }),
             legacy({
                 targets: ['chrome 63', 'defaults', 'not IE 11']
-            })
+            }),
+            topLevelAwait()
         ],
         resolve: {
             alias: {
