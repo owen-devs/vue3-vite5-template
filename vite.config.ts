@@ -113,8 +113,7 @@ export default defineConfig(({ command, mode }) => {
             }),
             legacy({
                 targets: ['chrome 63', 'defaults', 'not IE 11']
-            }),
-            generateConfig()
+            })
         ],
         resolve: {
             alias: {

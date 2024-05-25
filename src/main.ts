@@ -12,5 +12,5 @@ app.use(pinia)
 app.use(router)
 
 const useInfoStore = useUserInfoStore()
-useInfoStore.getUserInfo()
+useInfoStore.getUserInfo() //await
 app.mount('#app')

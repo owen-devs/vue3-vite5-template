@@ -42,14 +42,15 @@ function createService(options: any) {
     )
     return service
 }
-console.log(import.meta.env)
+
+const { VITE_BASE_API } = useEnvs()
 const request = createService({
-    baseURL: import.meta.env.VITE_BASE_API,
+    baseURL: VITE_BASE_API,
     timeout: 35000
 })
 
 const downloadRequest = createService({
-    baseURL: import.meta.env.VITE_BASE_API,
+    baseURL: VITE_BASE_API,
     responseType: 'arraybuffer',
     headers: { 'content-type': 'application/x-www-form-urlencoded' },
     download: true,

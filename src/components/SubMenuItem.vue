@@ -31,8 +31,7 @@ const goRoute = (row: any) => {
     console.log(row)
     const isExist = routes.find((v) => v.path === row.path)
     console.log(isExist)
-    if (isExist) {
-        router.push({ path: row.path })
-    }
+
+    router.push({ path: row.path })
 }
 </script>

@@ -3,6 +3,6 @@
 </template>
 <route lang="yaml">
 meta:
-    title: '404'
-    layout: 404
+    title: '找不到页面'
+    layout: detail
 </route>
