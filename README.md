@@ -4,18 +4,7 @@
 
 ## 📢 版本信息
 
-![](https://img.shields.io/badge/nodejs-^20.10.0-339933?logo=nodedotjs)
-![](https://img.shields.io/badge/vite-^5.1.6-646CFF?logo=vite)
-![](https://img.shields.io/badge/vue-^3.4.21-4FC08D?logo=vuedotjs)
-![](https://img.shields.io/badge/vue--router-^4.3.0-4FC08D?logo=vuedotjs)
-![](https://img.shields.io/badge/pinia-^2.1.7-4FC08D?logo=vuedotjs)
-![](https://img.shields.io/badge/vueuse-^10.6.1-4FC08D?logo=vuedotjs)
-![](https://img.shields.io/badge/element--plus-^2.4.2-409eff?logo=element)
-![](https://img.shields.io/badge/axios-^1.6.2-5a29e4?logo=axios)
-![](https://img.shields.io/badge/unocss-^0.57.7-333333?logo=unocss)
-![](https://img.shields.io/badge/animate.css-^4.1.1-351c75)
-![](https://img.shields.io/badge/sass-^1.69.5-CC6699?logo=sass)
-![](https://img.shields.io/badge/typescript-~5.4.0-3178C6?logo=typescript)
+![img](https://img.shields.io/badge/nodejs-^20.10.0-339933?logo=nodedotjs) ![](https://img.shields.io/badge/vite-^5.1.6-646CFF?logo=vite) ![](https://img.shields.io/badge/vue-^3.4.21-4FC08D?logo=vuedotjs) ![](https://img.shields.io/badge/vue--router-^4.3.0-4FC08D?logo=vuedotjs) ![](https://img.shields.io/badge/pinia-^2.1.7-4FC08D?logo=vuedotjs) ![](https://img.shields.io/badge/vueuse-^10.6.1-4FC08D?logo=vuedotjs) ![](https://img.shields.io/badge/element--plus-^2.7.3-409eff?logo=element) ![](https://img.shields.io/badge/axios-^1.6.2-5a29e4?logo=axios) ![](https://img.shields.io/badge/unocss-^0.57.7-333333?logo=unocss) ![](https://img.shields.io/badge/animate.css-^4.1.1-351c75) ![](https://img.shields.io/badge/sass-^1.69.5-CC6699?logo=sass) ![](https://img.shields.io/badge/typescript-~5.4.0-3178C6?logo=typescript)
 
 ![visitors](https://visitor-badge.laobi.icu/badge?page_id=w461662596.vue3-template)
 
@@ -59,6 +48,7 @@
 -   [Prettier](https://prettier.io/) 代码格式化工具，查看 [配置](./.prettierrc.json)
 -   [小驼峰式]()：函数（方法）命名、变量命名、文件名（目录）
 -   [大驼峰式]()：公共组件名
+-   [全大写式]()：环境变量名
 -   [中划线式]()：html属性名、UI组件部分属性名
 -   [下划线式]()：常量名、环境变量名
 
@@ -99,7 +89,7 @@
 -   [VSCode](https://code.visualstudio.com/)
 -   [VSCode 扩展](https://marketplace.visualstudio.com/vscode)
 
-    1. [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (请禁用Vetur)
+    1. [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (请禁用Vetur)
     2. [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin)
     3. [Prettier Formatter for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) VSCode 格式化插件
     4. [UnoCSS for VS Code](https://marketplace.visualstudio.com/items?itemName=antfu.unocss) UnoCSS官方提示插件
@@ -110,6 +100,7 @@
     1. [vue.js](https://plugins.jetbrains.com/plugin/9442-vue-js)
 
 -   **智能编码工具**：
+
     1. copilot
     2. codeium
     3. TONGYI Lingma
