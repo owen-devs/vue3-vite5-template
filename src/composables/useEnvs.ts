@@ -13,8 +13,8 @@ export function useEnvs() {
                 convertEnv[key] = true
             } else if (env[key] === 'false') {
                 convertEnv[key] = false
-            } else if (!isNaN(env[key] - 0)) {
-                convertEnv[key] = env[key] - 0
+            } else if (parseFloat(env[key]) == env[key]) {
+                convertEnv[key] = parseFloat(env[key])
             } else {
                 convertEnv[key] = env[key]
             }
