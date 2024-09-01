@@ -28,6 +28,23 @@ export const menus = [
         icon: 'i-ph-dots-three-circle-vertical-fill'
     },
     {
+        path: '/sass',
+        title: 'sass自定义',
+        icon: 'i-ph-dots-three-circle-vertical-fill',
+        children: [
+            {
+                path: '/sass/btnTypes',
+                title: '按钮批量生成',
+                icon: 'i-ph-dots-three-circle-vertical-fill'
+            },
+            {
+                path: '/sass/circleMenus',
+                title: '环形菜单',
+                icon: 'i-ph-dots-three-circle-vertical-fill'
+            }
+        ]
+    },
+    {
         title: '无限菜单',
         path: '/loop',
         icon: 'i-ph-list-bullets-duotone',
