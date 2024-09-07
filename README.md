@@ -136,15 +136,3 @@ npm run test:unit
 ```sh
 npm run lint
 ```
-
-## Github Stats
-
-[![GitHub stats](https://github-readme-stats.vercel.app/api?username=owen-devs)](https://github.com/anuraghazra/github-readme-stats)
-
-<!-- ## LeetCode Stats
-
-![](https://stats.justsong.cn/api/leetcode/?username=owen-devs&theme=dark) -->
-
-## Trophy
-
-[![trophy](https://github-profile-trophy.vercel.app/?username=owen-devs)](https://github.com/ryo-ma/github-profile-trophy)
