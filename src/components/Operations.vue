@@ -1,17 +1,17 @@
 <template>
     <div class="w-100% inline-flex overflow-hidden" ref="wrapper">
         <div ref="inner" class="w-auto ws-nowrap break-keep inline-flex items-center">
-            <component :is="item" v-for="item in commonBtns" :key="item.key" />
-            <el-dropdown v-if="isOvered">
+            <component :is="item" v-for="(item, index) in commonBtns" :key="'comm_' + index" />
+            <el-dropdown v-if="isOvered && moreBtns.length > 0">
                 <span class="text-0.95em pl-10px hover:cursor-pointer more-btn">更多</span>
                 <template #dropdown>
                     <el-dropdown-menu>
                         <el-dropdown-item
                             v-for="(item, i) in moreBtns"
-                            :key="i"
+                            :key="'more_' + i"
                             class="operation-dropdown-list-item"
                         >
-                            <component :is="item" :key="item.key" />
+                            <component :is="item" :key="'more_comp_' + i" />
                         </el-dropdown-item>
                     </el-dropdown-menu>
                 </template>
@@ -28,9 +28,17 @@ const wrapper = ref<HTMLElement | null>(null)
 const inner = ref<HTMLElement | null>(null)
 const slots: Readonly<any> = useSlots()
 let slotsNode: VNode[] = slots?.default()
+
+const isExcludeNode = ({ props }: VNode) => {
+    props = props || {}
+    const camelKebad = ['is-exclude', 'isExclude']
+    const hasKey = Object.keys(props).find((k) => camelKebad.includes(k))
+    return !!hasKey && props[hasKey] !== false
+}
 slotsNode = slotsNode.filter(
     (node) =>
         node &&
+        !isExcludeNode(node) &&
         node.type.toString() !== 'Symbol(Comment)' &&
         node.type.toString() !== 'Symbol()' &&
         node.type.toString() !== 'Symbol(v-cmt)'
@@ -92,6 +100,8 @@ const btnSplit = async () => {
             moreBtns.value.push(slotsNode[j])
         }
         isOvered.value = true
+    } else {
+        isOvered.value = false
     }
 }
 
