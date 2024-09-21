@@ -28,6 +28,18 @@ export const menus = [
         icon: 'i-ph-dots-three-circle-vertical-fill'
     },
     {
+        path: '/compoDemo',
+        title: '组件演示',
+        icon: 'i-ph-dots-three-circle-vertical-fill',
+        children: [
+            {
+                path: '/compoDemo/trafficLight',
+                title: '交通信号灯',
+                icon: 'i-ph-dots-three-circle-vertical-fill'
+            }
+        ]
+    },
+    {
         path: '/sass',
         title: 'sass自定义',
         icon: 'i-ph-dots-three-circle-vertical-fill',
