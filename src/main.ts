@@ -5,6 +5,7 @@ import App from './App.vue'
 import router from './router'
 import { ElLoading } from 'element-plus'
 import persist from 'pinia-plugin-persistedstate'
+import { autoAnimatePlugin } from '@formkit/auto-animate/vue'
 
 const directives = import.meta.glob('./directives/*.ts', { eager: true })
 
@@ -13,6 +14,7 @@ const pinia = createPinia()
 pinia.use(persist)
 app.use(pinia)
 app.use(router)
+app.use(autoAnimatePlugin)
 
 const directivesRegister = () => {
     app.directive('loading', ElLoading.directive)

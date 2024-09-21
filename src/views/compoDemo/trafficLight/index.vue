@@ -1,5 +1,5 @@
 <template>
-    <div class="traffic-lights w-530px" :class="[currentColor]">
+    <div class="traffic-lights w-530px" :class="[currentColor]" v-auto-animate>
         <h2>交通信号灯：问询模式</h2>
         <div class="flex items-center">
             <div class="green bg-gray rd-50% w-150px h-150px mr-40px"></div>

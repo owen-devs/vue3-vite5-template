@@ -23,15 +23,15 @@ export const menus = [
         icon: 'i-ph-dots-three-circle-vertical-fill'
     },
     {
-        path: '/waterfallLayout',
-        title: '瀑布流布局',
-        icon: 'i-ph-dots-three-circle-vertical-fill'
-    },
-    {
         path: '/compoDemo',
         title: '组件演示',
         icon: 'i-ph-dots-three-circle-vertical-fill',
         children: [
+            {
+                path: '/compoDemo/waterfallLayout',
+                title: '瀑布流布局',
+                icon: 'i-ph-dots-three-circle-vertical-fill'
+            },
             {
                 path: '/compoDemo/trafficLight',
                 title: '交通信号灯',
