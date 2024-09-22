@@ -16,12 +16,12 @@
         "@vueuse/core": "^10.6.1",
         "animate.css": "^4.1.1",
         "axios": "^1.6.2",
-        "element-plus": "^2.7.3",
+        "element-plus": "^2.8.3",
         "pinia": "^2.1.7",
         "rollup-plugin-visualizer": "^5.9.3",
         "terser": "^5.26.0",
         "unocss": "^0.57.7",
-        "vue": "^3.5.7",
+        "vue": "^3.5.8",
         "vue-router": "^4.3.0"
     },
     "devDependencies": {
@@ -52,7 +52,7 @@
         "typescript": "~5.4.0",
         "unplugin-auto-import": "^0.17.1",
         "unplugin-vue-components": "^0.25.2",
-        "vite": "^5.1.6",
+        "vite": "^5.4.3",
         "vite-plugin-pages": "^0.32.0-beta.0",
         "vite-plugin-resolve-externals": "^0.2.2",
         "vite-plugin-top-level-await": "^1.4.1",
