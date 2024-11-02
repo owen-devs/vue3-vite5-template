@@ -12,11 +12,13 @@
             </el-icon>
         </el-button>
         <Breadcrumb class="flex-1" />
+        <Themes />
         <UserMenus />
     </div>
 </template>
 <script lang="ts" setup>
 import UserMenus from './components/userMenus.vue'
+import Themes from './components/themes.vue'
 
 const collapseStore = useCollapseStore()
 

@@ -1,7 +1,8 @@
 @import './el-dialog';
 @import './el-drawer';
 @import './el-button';
-:root.default {
+
+:root.dark {
     /**el-dialog**/
     .el-overlay.dialog-fade-enter-active {
         animation-duration: 0.6s;

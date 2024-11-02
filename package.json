@@ -50,6 +50,7 @@
         "prettier": "^3.0.3",
         "sass": "^1.69.5",
         "typescript": "~5.4.0",
+        "unocss-preset-theme": "^0.14.1",
         "unplugin-auto-import": "^0.17.1",
         "unplugin-vue-components": "^0.25.2",
         "vite": "^5.4.3",

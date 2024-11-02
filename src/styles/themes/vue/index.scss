@@ -1,6 +1,7 @@
 @import './css-vars';
 @import './elementplus';
-:root.default {
+:root.vue {
+    /**el-dialog**/
     .el-overlay.dialog-fade-enter-active {
         animation-duration: 0.6s;
 
@@ -24,6 +25,26 @@
         .el-dialog {
             animation-name: backOutDown;
             animation-duration: 0.6s;
+        }
+    }
+    /**el-drawer**/
+    .el-overlay.el-drawer-fade-enter-active {
+        transition: all 1s;
+
+        .el-drawer.rtl {
+            transition: none;
+            animation-name: bounceInRight;
+            animation-duration: 1s;
+        }
+    }
+    .el-overlay.el-drawer-fade-leave-active {
+        transition: all 1s !important;
+
+        .el-drawer.rtl {
+            transform: translateX(0%);
+            transition: none;
+            animation-name: bounceOutRight;
+            animation-duration: 1s;
         }
     }
 }

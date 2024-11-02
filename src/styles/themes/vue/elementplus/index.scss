@@ -1,7 +1,9 @@
 @import './el-dialog';
 @import './el-drawer';
 @import './el-button';
-:root.default {
+@import './el-menu';
+
+:root.vue {
     /**el-dialog**/
     .el-overlay.dialog-fade-enter-active {
         animation-duration: 0.6s;

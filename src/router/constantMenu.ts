@@ -1,6 +1,11 @@
 import { deepClone } from '@/utils'
 export const menus = [
     {
+        path: '/theme',
+        title: '主题切换',
+        icon: 'i-ph-dots-three-circle-vertical-fill'
+    },
+    {
         path: '/accounts',
         title: '账号管理',
         icon: 'i-ph-user-list-duotone',
