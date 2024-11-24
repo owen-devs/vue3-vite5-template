@@ -9,6 +9,7 @@ declare global {
   const ElMessage: typeof import('element-plus/es')['ElMessage']
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']
+  const autoCalcFileSize: typeof import('../utils/index')['autoCalcFileSize']
   const autoResetRef: typeof import('@vueuse/core')['autoResetRef']
   const computed: typeof import('vue')['computed']
   const computedAsync: typeof import('@vueuse/core')['computedAsync']
@@ -179,6 +180,7 @@ declare global {
   const useDraggable: typeof import('@vueuse/core')['useDraggable']
   const useDropZone: typeof import('@vueuse/core')['useDropZone']
   const useElUpload: typeof import('../composables/useElUpload')['useElUpload']
+  const useElementAttrs: typeof import('../composables/useElementAttrs')['useElementAttrs']
   const useElementBounding: typeof import('@vueuse/core')['useElementBounding']
   const useElementByPoint: typeof import('@vueuse/core')['useElementByPoint']
   const useElementHover: typeof import('@vueuse/core')['useElementHover']
@@ -220,6 +222,7 @@ declare global {
   const useMouse: typeof import('@vueuse/core')['useMouse']
   const useMouseInElement: typeof import('@vueuse/core')['useMouseInElement']
   const useMousePressed: typeof import('@vueuse/core')['useMousePressed']
+  const useMultiObserver: typeof import('../composables/useElementAttrs')['useMultiObserver']
   const useMutationObserver: typeof import('@vueuse/core')['useMutationObserver']
   const useNavigatorLanguage: typeof import('@vueuse/core')['useNavigatorLanguage']
   const useNetwork: typeof import('@vueuse/core')['useNetwork']
@@ -332,6 +335,7 @@ declare module 'vue' {
     readonly ElMessage: UnwrapRef<typeof import('element-plus/es')['ElMessage']>
     readonly acceptHMRUpdate: UnwrapRef<typeof import('pinia')['acceptHMRUpdate']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
+    readonly autoCalcFileSize: UnwrapRef<typeof import('../utils/index')['autoCalcFileSize']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly computedAsync: UnwrapRef<typeof import('@vueuse/core')['computedAsync']>
@@ -502,6 +506,7 @@ declare module 'vue' {
     readonly useDraggable: UnwrapRef<typeof import('@vueuse/core')['useDraggable']>
     readonly useDropZone: UnwrapRef<typeof import('@vueuse/core')['useDropZone']>
     readonly useElUpload: UnwrapRef<typeof import('../composables/useElUpload')['useElUpload']>
+    readonly useElementAttrs: UnwrapRef<typeof import('../composables/useElementAttrs')['useElementAttrs']>
     readonly useElementBounding: UnwrapRef<typeof import('@vueuse/core')['useElementBounding']>
     readonly useElementByPoint: UnwrapRef<typeof import('@vueuse/core')['useElementByPoint']>
     readonly useElementHover: UnwrapRef<typeof import('@vueuse/core')['useElementHover']>
@@ -648,6 +653,7 @@ declare module '@vue/runtime-core' {
     readonly ElMessage: UnwrapRef<typeof import('element-plus/es')['ElMessage']>
     readonly acceptHMRUpdate: UnwrapRef<typeof import('pinia')['acceptHMRUpdate']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
+    readonly autoCalcFileSize: UnwrapRef<typeof import('../utils/index')['autoCalcFileSize']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly computedAsync: UnwrapRef<typeof import('@vueuse/core')['computedAsync']>
@@ -818,6 +824,7 @@ declare module '@vue/runtime-core' {
     readonly useDraggable: UnwrapRef<typeof import('@vueuse/core')['useDraggable']>
     readonly useDropZone: UnwrapRef<typeof import('@vueuse/core')['useDropZone']>
     readonly useElUpload: UnwrapRef<typeof import('../composables/useElUpload')['useElUpload']>
+    readonly useElementAttrs: UnwrapRef<typeof import('../composables/useElementAttrs')['useElementAttrs']>
     readonly useElementBounding: UnwrapRef<typeof import('@vueuse/core')['useElementBounding']>
     readonly useElementByPoint: UnwrapRef<typeof import('@vueuse/core')['useElementByPoint']>
     readonly useElementHover: UnwrapRef<typeof import('@vueuse/core')['useElementHover']>

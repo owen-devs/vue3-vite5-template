@@ -35,14 +35,10 @@ const props = defineProps({
 const wrapper = ref()
 const isDisabled = ref(true)
 const setDisabled = () => {
-    console.log(wrapper.value.offsetHeight)
-    console.log(wrapper.value.scrollHeight)
     isDisabled.value =
         !props.rows || props.rows === 1
             ? wrapper.value.offsetWidth >= wrapper.value.scrollWidth
             : wrapper.value.offsetHeight >= wrapper.value.scrollHeight
-
-    console.log(isDisabled.value)
 }
 
 onUpdated(() => {

@@ -53,3 +53,28 @@ export function joinURLString(...urls: string[]): string {
 export function deepClone(arr: any[]): any[] {
     return JSON.parse(JSON.stringify(arr))
 }
+
+/**
+ * 自动将文件大小转换成合适的带单位大小
+ * @param byte {number} - 文件大小（B）
+ * @returns
+ */
+export function autoCalcFileSize(byte: number) {
+    const units = ['B', 'K', 'M', 'G', 'T']
+    let i = 0,
+        unit = units[0]
+    while (byte >= 1024) {
+        if (i >= units.length - 1) {
+            break
+        }
+        byte /= 1024
+        i++
+        unit = units[i]
+    }
+
+    const byteStr = byte.toString()
+    const index = byteStr.indexOf('.')
+    byte = index === -1 ? byte : parseFloat(byteStr.substring(0, index + 3))
+
+    return `${byte}${unit}}`
+}

@@ -35,6 +35,7 @@
     </div>
 </template>
 <script lang="ts" setup>
+import type { ElForm } from 'element-plus'
 const emits = defineEmits(['refresh', 'closed'])
 import { getOrgInfo, createOrg, updateOrg, getOrgTree } from '@/api/org'
 
@@ -53,16 +54,16 @@ const showDrawer = ref(true)
 const direction = 'rtl'
 const title = computed(() => (props.type === 'create' ? '新建部门' : '编辑部门'))
 const isUpdate = computed(() => !!props.row?.id)
-const formRef: Ref = ref(null)
+const formRef = ref<InstanceType<typeof ElForm>>()
 
-const forms = ref({
+const forms = ref<Record<string, any>>({
     id: '',
     name: '',
     parentId: '',
     remark: ''
 })
 
-const rules = ref({
+const rules = ref<Record<string, Record<string, any>[]>>({
     name: [
         { required: true, message: '请输入部门名称', trigger: 'blur' },
         { min: 3, max: 20, message: '长度在3到20个字符', trigger: 'blur' }
@@ -117,7 +118,7 @@ const getDetail = () => {
 }
 
 const handleSubmit = () => {
-    formRef.value.validate((valid: boolean) => {
+    formRef.value?.validate((valid: boolean) => {
         if (valid) {
             if (props.type === 'update' && forms.value.id) {
                 updateOrg(forms.value).then((res) => {
