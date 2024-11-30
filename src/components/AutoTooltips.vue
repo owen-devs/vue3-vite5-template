@@ -1,8 +1,5 @@
 <template>
-    <el-tooltip placement="top" :disabled="!props.text || isDisabled" v-bind="$attrs">
-        <template #content>
-            <div class="" v-text="props.text"></div>
-        </template>
+    <el-tooltip placement="top" :content="props.text" :disabled="finalDisabled" v-bind="$attrs">
         <div
             class="w-full"
             :class="
@@ -34,6 +31,8 @@ const props = defineProps({
 
 const wrapper = ref()
 const isDisabled = ref(true)
+const finalDisabled = computed(() => !props.text || isDisabled.value)
+
 const setDisabled = () => {
     isDisabled.value =
         !props.rows || props.rows === 1
@@ -41,8 +40,18 @@ const setDisabled = () => {
             : wrapper.value.offsetHeight >= wrapper.value.scrollHeight
 }
 
+const { width: wrapperWidth, height: wrapperHeight } = useElementSize(wrapper)
+
+watchEffect(() => {
+    if (wrapperWidth.value && wrapperHeight.value) {
+        doSetDisabled()
+    }
+})
+
+const doSetDisabled = useDebounceFn(setDisabled, 10)
+
 onUpdated(() => {
-    setDisabled()
+    doSetDisabled()
 })
 </script>
 <style lang="scss" scoped>

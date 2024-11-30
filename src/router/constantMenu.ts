@@ -41,6 +41,16 @@ export const menus = [
                 path: '/compoDemo/trafficLight',
                 title: '交通信号灯',
                 icon: 'i-ph-dots-three-circle-vertical-fill'
+            },
+            {
+                path: '/compoDemo/autoTooltips',
+                title: '文字超出省略显示tooltips',
+                icon: 'i-ph-dots-three-circle-vertical-fill'
+            },
+            {
+                path: '/compoDemo/autoLabelTooltips',
+                title: '标签超出显示tooltips',
+                icon: 'i-ph-dots-three-circle-vertical-fill'
             }
         ]
     },
