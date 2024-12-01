@@ -4,7 +4,6 @@
             :default-active="active"
             :collapse="collapseStore.isCollapse"
             class="!border-r-none el-menu-sidebar"
-            text-color="#ccc"
             :menus="filterMenus"
         />
     </el-scrollbar>

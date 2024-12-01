@@ -1,2 +1,2 @@
-@import './css-vars';
-@import './elementplus';
+@use './css-vars' as *;
+@use './elementplus' as *;

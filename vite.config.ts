@@ -137,6 +137,7 @@ export default defineConfig(({ command, mode }) => {
         css: {
             preprocessorOptions: {
                 scss: {
+                    api: 'modern-compiler',
                     // 引入自定义的样式文件
                     additionalData: `@use "@/styles/main.scss" as *;`
                 }

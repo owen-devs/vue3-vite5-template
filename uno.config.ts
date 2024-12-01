@@ -9,7 +9,7 @@ import {
     transformerVariantGroup
 } from 'unocss'
 import type { Theme } from 'unocss/preset-uno'
-import presetTheme from 'unocss-preset-theme'
+import { presetTheme } from 'unocss-preset-theme'
 
 import { themes } from './src/styles/themes/themes'
 import { dynamicIcons } from './src/styles/dynamicIcons'
@@ -34,24 +34,24 @@ export default defineConfig({
         }
     },
     rules: [
-        // [
-        //     /^font-(.*)$/,
-        //     ([, c], { theme }) => {
-        //         if (theme.font[c]) return { 'font-size': theme.font[c] }
-        //     }
-        // ],
-        // [
-        //     /^h-(.*)$/,
-        //     ([, c], { theme }) => {
-        //         if (theme.height[c]) return { height: theme.height[c] }
-        //     }
-        // ],
-        // [
-        //     /^w-(.*)$/,
-        //     ([, c], { theme }) => {
-        //         if (theme.width[c]) return { width: theme.width[c] }
-        //     }
-        // ]
+        [
+            /^font-(.*)$/,
+            ([, c], { theme }) => {
+                if (theme.font[c]) return { 'font-size': theme.font[c] }
+            }
+        ],
+        [
+            /^h-(.*)$/,
+            ([, c], { theme }) => {
+                if (theme.height[c]) return { height: theme.height[c] }
+            }
+        ],
+        [
+            /^w-(.*)$/,
+            ([, c], { theme }) => {
+                if (theme.width[c]) return { width: theme.width[c] }
+            }
+        ]
     ],
     presets: [
         presetUno(),
@@ -63,9 +63,15 @@ export default defineConfig({
                 // ...
             }
         }),
-        presetTheme<Theme>({
-            theme: themes
-        })
+        // presetTheme<Theme>({
+        //     theme: themes,
+        //     prefix: '--un-theme',
+        //     selectors: {
+        //         default: '.default',
+        //         vue: '.vue'
+        //     }
+        // })
+        presetTheme<Theme>({ theme: themes })
     ],
     transformers: [transformerDirectives(), transformerVariantGroup()]
 })

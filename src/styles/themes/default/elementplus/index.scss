@@ -1,6 +1,8 @@
-@import './el-dialog';
-@import './el-drawer';
-@import './el-button';
+@use './el-dialog' as *;
+@use './el-drawer' as *;
+@use './el-button' as *;
+@use './el-menu' as *;
+
 :root.default {
     /**el-dialog**/
     .el-overlay.dialog-fade-enter-active {

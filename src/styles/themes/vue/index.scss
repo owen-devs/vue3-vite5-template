@@ -1,5 +1,5 @@
-@import './css-vars';
-@import './elementplus';
+@use './css-vars' as *;
+@use './elementplus' as *;
 :root.vue {
     /**el-dialog**/
     .el-overlay.dialog-fade-enter-active {

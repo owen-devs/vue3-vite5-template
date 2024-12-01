@@ -13,7 +13,6 @@ export const themes = {
             bg54: '#545c64',
             bg4a: '#4a4a4a',
             sidebar: '#3E404C',
-
             base: '#2793ff',
             base0: '#1185f8',
             dark0: '#000',
@@ -39,9 +38,8 @@ export const themes = {
             bg54: '#545c64',
             bg4a: '#4a4a4a',
             sidebar: '#3E404C',
-
             base: '#42b883',
-            base0: '#1185f8',
+            base0: '#32b883',
             dark0: '#000',
             dark3: '#333',
             dark5: '#555',

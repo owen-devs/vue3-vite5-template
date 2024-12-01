@@ -2,7 +2,7 @@
     <el-container class="w-100vw h-100vh">
         <el-aside
             :width="asideWidth"
-            class="flex flex-col overflow-auto side-bar transition-all ease-in-out duration-300 bg-sidebar"
+            class="flex flex-col overflow-auto side-bar transition-all ease-in-out duration-300 bg-sidebar-bg"
         >
             <logo />
             <side-bar class="flex-1" />
