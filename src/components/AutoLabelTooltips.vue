@@ -93,9 +93,13 @@ const showTags = async () => {
                 break
             } else {
                 isOvered.value = false
+                remainCount.value = 0
             }
             i--
             j++
+        } else {
+            isOvered.value = false
+            remainCount.value = 0
         }
     }
 }
