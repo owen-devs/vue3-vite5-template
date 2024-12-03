@@ -24,11 +24,7 @@
                     >
                         {{ item.name }}
                     </el-tag>
-                    <el-tag
-                        v-if="rowIndex === visibleTags.length - 1 && isOvered"
-                        type="info"
-                        :disable-transitions="true"
-                    >
+                    <el-tag v-if="row.isOvered" type="info" :disable-transitions="true">
                         +{{ remainCount }}
                     </el-tag>
                 </div>
@@ -65,7 +61,6 @@ const checkedOverd = () => inner.value?.offsetWidth > wrapper.value?.offsetWidth
 
 const visibleTags = ref<any[]>([])
 const remainCount = ref<number>(0)
-const isOvered = ref<boolean>(false)
 const isDisabled = computed(() => remainCount.value === 0)
 
 const showTags = async () => {
@@ -74,7 +69,11 @@ const showTags = async () => {
 
     for (let i = 0; i < tagsMap.value.length; i++) {
         if (!visibleTags.value[j]) {
-            visibleTags.value[j] = { children: toRef([]).value, id: `row_${Date.now()}_${j}` }
+            visibleTags.value[j] = {
+                children: toRef([]).value,
+                id: `row_${Date.now()}_${j}`,
+                isOvered: false
+            }
         }
         visibleTags.value[j].children.push(tagsMap.value[i])
         await nextTick()
@@ -82,7 +81,7 @@ const showTags = async () => {
             visibleTags.value[j].children.splice(-1, 1)
             await nextTick()
             if (j >= props.rows - 1) {
-                isOvered.value = true
+                visibleTags.value[j].isOvered = true
                 await nextTick()
                 if (checkedOverd()) {
                     visibleTags.value[j].children.splice(-1, 1)
@@ -92,13 +91,13 @@ const showTags = async () => {
                 remainCount.value = tagsMap.value.length - i
                 break
             } else {
-                isOvered.value = false
+                visibleTags.value[j].isOvered = false
                 remainCount.value = 0
             }
             i--
             j++
         } else {
-            isOvered.value = false
+            visibleTags.value[j].isOvered = false
             remainCount.value = 0
         }
     }
@@ -112,10 +111,6 @@ watch(
         doShowTags()
     }
 )
-
-onUpdated(() => {
-    doShowTags()
-})
 </script>
 <style lang="scss" scoped>
 .label-tags {
