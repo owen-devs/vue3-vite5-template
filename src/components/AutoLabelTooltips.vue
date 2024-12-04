@@ -33,6 +33,9 @@
     </el-tooltip>
 </template>
 <script lang="ts" setup>
+/**
+ * 多行标签组件，超出显示剩余标签数
+ */
 const props = defineProps({
     tags: {
         type: Array<string | number | boolean>,
@@ -41,6 +44,10 @@ const props = defineProps({
     rows: {
         type: Number,
         default: 3
+    },
+    debounceDelay: {
+        type: Number,
+        default: 10
     }
 })
 
@@ -63,47 +70,50 @@ const visibleTags = ref<any[]>([])
 const remainCount = ref<number>(0)
 const isDisabled = computed(() => remainCount.value === 0)
 
-const showTags = async () => {
-    visibleTags.value = []
-    let j = 0
+const showTags = () => {
+    nextTick(async () => {
+        visibleTags.value = []
+        let j = 0,
+            i = 0
 
-    for (let i = 0; i < tagsMap.value.length; i++) {
-        if (!visibleTags.value[j]) {
-            visibleTags.value[j] = {
-                children: toRef([]).value,
-                id: `row_${Date.now()}_${j}`,
-                isOvered: false
-            }
-        }
-        visibleTags.value[j].children.push(tagsMap.value[i])
-        await nextTick()
-        if (checkedOverd()) {
-            visibleTags.value[j].children.splice(-1, 1)
-            await nextTick()
-            if (j >= props.rows - 1) {
-                visibleTags.value[j].isOvered = true
-                await nextTick()
-                if (checkedOverd()) {
-                    visibleTags.value[j].children.splice(-1, 1)
-                    await nextTick()
-                    i--
+        for (; i < tagsMap.value.length; i++) {
+            if (!visibleTags.value[j]) {
+                visibleTags.value[j] = {
+                    children: toRef([]).value,
+                    id: `row_${Date.now()}_${j}`,
+                    isOvered: false
                 }
-                remainCount.value = tagsMap.value.length - i
-                break
+            }
+            visibleTags.value[j].children.push(tagsMap.value[i])
+            await nextTick()
+            if (checkedOverd()) {
+                visibleTags.value[j].children.splice(-1, 1)
+                await nextTick()
+                if (j >= props.rows - 1) {
+                    visibleTags.value[j].isOvered = true
+                    await nextTick()
+                    if (checkedOverd()) {
+                        visibleTags.value[j].children.splice(-1, 1)
+                        await nextTick()
+                        i--
+                    }
+                    remainCount.value = tagsMap.value.length - i
+                    break
+                } else {
+                    visibleTags.value[j].isOvered = false
+                    remainCount.value = 0
+                }
+                i--
+                j++
             } else {
                 visibleTags.value[j].isOvered = false
                 remainCount.value = 0
             }
-            i--
-            j++
-        } else {
-            visibleTags.value[j].isOvered = false
-            remainCount.value = 0
         }
-    }
+    })
 }
 
-const doShowTags = useDebounceFn(showTags, 10)
+const doShowTags = useDebounceFn(showTags, props.debounceDelay)
 
 watch(
     () => tagsMap.value,
