@@ -51,6 +51,11 @@ export const menus = [
                 path: '/compoDemo/autoLabelTooltips',
                 title: '标签超出显示tooltips',
                 icon: 'i-ph-dots-three-circle-vertical-fill'
+            },
+            {
+                path: '/compoDemo/svgLoading',
+                title: '加载动画指令',
+                icon: 'i-ph-dots-three-circle-vertical-fill'
             }
         ]
     },
