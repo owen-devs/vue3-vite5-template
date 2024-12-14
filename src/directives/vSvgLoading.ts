@@ -1,5 +1,4 @@
 import svgContent from '@/assets/svgLoading.ts'
-console.log(svgContent)
 
 interface LoadingOptions {
     svgClass: string
@@ -20,9 +19,9 @@ export const vSvgLoading = {
         const createLoading = (el: HTMLElement, binding: any, vNode: any) => {
             const defaults: LoadingOptions = {
                 svgClass: '',
-                svgContent: svgContent,
+                svgContent,
                 svgViewBox: '', //min-x min-y width height
-                markBgColor: 'rgba(255,255,255,1)',
+                markBgColor: 'rgba(255,255,255,0.8)',
                 markClass: '',
                 spinnerClass: '',
                 spinnerH: 300,
@@ -43,7 +42,6 @@ export const vSvgLoading = {
             spinnerEl.innerHTML = `${args.svgContent}`
 
             const svgEl = spinnerEl.getElementsByTagName('svg')[0]
-            console.log(svgEl)
             if (args.spinnerH) {
                 svgEl.setAttribute('width', `${args.spinnerH}px`)
                 svgEl.setAttribute('height', `${args.spinnerH}px`)

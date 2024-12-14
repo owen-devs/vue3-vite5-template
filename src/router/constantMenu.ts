@@ -56,6 +56,11 @@ export const menus = [
                 path: '/compoDemo/svgLoading',
                 title: '加载动画指令',
                 icon: 'i-ph-dots-three-circle-vertical-fill'
+            },
+            {
+                path: '/compoDemo/chains',
+                title: '链式调用与等待执行',
+                icon: 'i-ph-dots-three-circle-vertical-fill'
             }
         ]
     },
