@@ -2,7 +2,12 @@
     <el-tooltip placement="top" :disabled="isDisabled" v-bind="$attrs">
         <template #content>
             <div class="">
-                <el-tag type="primary" :disable-transitions="true" v-for="tag in tagsMap">
+                <el-tag
+                    type="primary"
+                    class="mr-5px mb-5px"
+                    :disable-transitions="true"
+                    v-for="tag in tagsMap"
+                >
                     {{ tag.name }}
                 </el-tag>
             </div>
