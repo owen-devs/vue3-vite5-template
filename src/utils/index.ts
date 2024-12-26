@@ -63,10 +63,7 @@ export function autoCalcFileSize(byte: number) {
     const units = ['B', 'K', 'M', 'G', 'T']
     let i = 0,
         unit = units[0]
-    while (byte >= 1024) {
-        if (i >= units.length - 1) {
-            break
-        }
+    while (byte >= 1024 && i < units.length - 1) {
         byte /= 1024
         i++
         unit = units[i]
@@ -77,4 +74,63 @@ export function autoCalcFileSize(byte: number) {
     byte = index === -1 ? byte : parseFloat(byteStr.substring(0, index + 3))
 
     return `${byte}${unit}}`
+}
+
+/**
+ * 根据编码读取txt文件
+ * @param file {File} - 文件对象
+ * @param encode {string} - 编码格式
+ * @returns
+ */
+export function readTxtFile(file: File, encode: string): Promise<string> {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader()
+        reader.onload = (e) => {
+            resolve(e.target?.result as string)
+        }
+        reader.onerror = (e) => {
+            reject(e)
+        }
+        reader.readAsText(file, encode)
+    })
+}
+
+/**
+ * 用不同编码读取txt文件
+ * @param file {File} - 文件对象
+ * @param encodes {string[]} - 编码格式数组
+ * @returns
+ */
+export async function readTxtByEncodes(
+    file: File,
+    encodes: string[] = ['UTF-8', 'GBK', 'GB2312']
+): Promise<string> {
+    for (const encode of encodes) {
+        const text = await readTxtFile(file, encode)
+        if (text && text.indexOf('�') > -1) {
+            continue
+        } else {
+            return text
+        }
+    }
+    return ''
+}
+
+/**
+ * 将以逗号或者换行符分隔的字符串转为只用逗号分隔的字符串――去除空格和重复逗号
+ * @param str {string} - 以逗号或者换行符分隔的字符串
+ */
+export function lineBreakToComma(str: string) {
+    if (!str) return ''
+    let text = ''
+    if (str.includes('\n')) {
+        text = str.replace(/\n/g, ',')
+    } else if (str.includes('\r\n')) {
+        text = str.replace(/\r\n/g, ',')
+    } else if (str.includes('\r')) {
+        text = str.replace(/\r/g, ',')
+    } else if (str.includes('↵')) {
+        text = str.replace(/↵/g, ',')
+    }
+    return text.replace(/,+/g, ',').replace(/^,|,$/g, '').replace(/\s+/g, '')
 }
