@@ -35,7 +35,18 @@ defineProps({
 const wrapper = ref<HTMLElement | null>(null)
 const inner = ref<HTMLElement | null>(null)
 const slots: Readonly<any> = useSlots()
-let slotsNode: VNode[] = slots?.default()
+const slotsNode = computed<VNode[]>(() =>
+    slots
+        ?.default()
+        ?.filter(
+            (node) =>
+                node &&
+                !isExcludeNode(node) &&
+                node.type.toString() !== 'Symbol(Comment)' &&
+                node.type.toString() !== 'Symbol()' &&
+                node.type.toString() !== 'Symbol(v-cmt)'
+        )
+)
 
 const isExcludeNode = ({ props }: VNode) => {
     props = props || {}
@@ -43,14 +54,6 @@ const isExcludeNode = ({ props }: VNode) => {
     const hasKey = Object.keys(props).find((k) => camelKebad.includes(k))
     return !!hasKey && props[hasKey] !== false
 }
-slotsNode = slotsNode.filter(
-    (node) =>
-        node &&
-        !isExcludeNode(node) &&
-        node.type.toString() !== 'Symbol(Comment)' &&
-        node.type.toString() !== 'Symbol()' &&
-        node.type.toString() !== 'Symbol(v-cmt)'
-)
 
 const commonBtns = ref<VNode[]>([])
 const moreBtns = ref<VNode[]>([])
@@ -67,18 +70,25 @@ watchEffect(() => {
     }
 })
 
+watch(
+    () => slotsNode.value,
+    (val) => {
+        btnSplit()
+    }
+)
+
 const btnSplit = async () => {
     commonBtns.value = []
     let moreLen = 0,
         i = 0,
         j = 0,
-        len = slotsNode.length
+        len = slotsNode.value.length
 
     for (; i < len; i++) {
-        if (!slotsNode[i]) {
+        if (!slotsNode.value[i]) {
             continue
         }
-        commonBtns.value.push(slotsNode[i])
+        commonBtns.value.push(slotsNode.value[i])
         await nextTick()
 
         if (checkOvered()) {
@@ -102,10 +112,10 @@ const btnSplit = async () => {
     if (moreLen > 0) {
         moreBtns.value = []
         for (; j < len; j++) {
-            if (!slotsNode[j]) {
+            if (!slotsNode.value[j]) {
                 continue
             }
-            moreBtns.value.push(slotsNode[j])
+            moreBtns.value.push(slotsNode.value[j])
         }
         isOvered.value = true
     } else {

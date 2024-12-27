@@ -18,7 +18,7 @@
                     v-for="(row, rowIndex) in visibleTags"
                     :key="row.id"
                     class="w-fit flex ws-nowrap break-keep items-center label-tags"
-                    :class="{ 'mb-5px': rowIndex !== visibleTags.length - 1 }"
+                    :class="{ 'mb-5px': props.rows > 1 && rowIndex !== visibleTags.length - 1 }"
                 >
                     <el-tag
                         type="primary"
