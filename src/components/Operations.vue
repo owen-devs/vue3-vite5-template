@@ -65,17 +65,10 @@ const { width: wrapperWidth } = useElementSize(wrapper, { width: 0, height: 0 })
 const { width: innerWidth } = useElementSize(inner, { width: 0, height: 0 })
 
 watchEffect(() => {
-    if (wrapperWidth.value && innerWidth.value) {
+    if (wrapperWidth.value && innerWidth.value && slotsNode.value) {
         btnSplit()
     }
 })
-
-watch(
-    () => slotsNode.value,
-    (val) => {
-        btnSplit()
-    }
-)
 
 const btnSplit = async () => {
     commonBtns.value = []
