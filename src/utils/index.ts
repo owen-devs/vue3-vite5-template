@@ -134,3 +134,56 @@ export function lineBreakToComma(str: string) {
     }
     return text.replace(/,+/g, ',').replace(/^,|,$/g, '').replace(/\s+/g, '')
 }
+
+/**
+ * 单例模式函数
+ * @param {Function} fn - 要执行的函数
+ */
+
+export function singleton(fn: Function) {
+    let instance: any
+    const proxy = new Proxy(fn, {
+        construct(target, args) {
+            if (instance) {
+                return instance
+            }
+
+            instance = Reflect.construct(target, args)
+            return instance
+        }
+    })
+    proxy.prototype.constructor = proxy
+
+    return proxy
+}
+
+/**
+ * 函数重载
+ */
+
+export function createOverload() {
+    const fnMap = new Map<string, Function>()
+    function overload(...args: any[]) {
+        const key = args
+            .map((it) => {
+                typeof it
+            })
+            .join(',')
+        const fn = fnMap.get(key)
+        if (fn) {
+            throw new Error('没有找到对应的实现')
+        }
+        return fn.apply(this, args)
+    }
+
+    overload.add = function (...args: any[]) {
+        const fn = args.pop()
+        if (typeof fn != 'function') {
+            throw new Error('最后一个参数必须是函数')
+        }
+
+        const key = args.join(',')
+        fnMap.set(key, fn)
+    }
+    return overload
+}
