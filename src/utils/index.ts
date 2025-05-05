@@ -123,10 +123,12 @@ export async function readTxtByEncodes(
 export function lineBreakToComma(str: string) {
     if (!str) return ''
     let text = ''
-    if (str.includes('\n')) {
-        text = str.replace(/\n/g, ',')
+    if (str.includes('，')) {
+        text = str.replace(/，/g, ',')
     } else if (str.includes('\r\n')) {
         text = str.replace(/\r\n/g, ',')
+    } else if (str.includes('\n')) {
+        text = str.replace(/\n/g, ',')
     } else if (str.includes('\r')) {
         text = str.replace(/\r/g, ',')
     } else if (str.includes('↵')) {
