@@ -50,8 +50,12 @@ export function joinURLString(...urls: string[]): string {
  * @param arr
  * @returns
  */
-export function deepClone(arr: any[]): any[] {
-    return JSON.parse(JSON.stringify(arr))
+export function deepClone(arr: any[]): any[] | null {
+    try {
+        return JSON.parse(JSON.stringify(arr))
+    } catch (err) {
+        return null
+    }
 }
 
 /**
