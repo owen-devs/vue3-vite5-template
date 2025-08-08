@@ -48,6 +48,7 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SubMenuItem: typeof import('./../components/InfiniteMenus/SubMenuItem.vue')['default']
+    TreeBuilder: typeof import('./../components/treeBuilder/index.vue')['default']
   }
   export interface ComponentCustomProperties {
     vLoading: typeof import('element-plus/es')['ElLoadingDirective']

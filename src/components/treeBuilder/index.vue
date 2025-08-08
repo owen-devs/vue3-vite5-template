@@ -113,13 +113,8 @@
             </template>
             <template #footer>
                 <div class="dialog-footer">
-                    <el-button size="small" @click="cancel">取 消</el-button>
-                    <el-button
-                        size="small"
-                        type="primary"
-                        @click="handleOk"
-                        :loading="confirmLoading"
-                    >
+                    <el-button size="small" @click="showEdit = false">取 消</el-button>
+                    <el-button size="small" type="primary" @click="" :loading="false">
                         确 定
                     </el-button>
                 </div>

@@ -15,9 +15,15 @@ export function getUserInfo(params: IterableObject): Promise<any> {
 
 export function getUserListByPage(params: IterableObject, data: IterableObject): Promise<any> {
     return new Promise((resolve) => {
-        resolve({
-            success: true,
-            list: [{ id: 1, name: '测试名称', createTime: '2024-05-20 13:14:59' }]
+        setTimeout(() => {
+            let list = []
+            for (let i = 0; i < params.pageSize; i++) {
+                list.push({ id: i, name: `测试名称${i}`, createTime: '2025-01-01 12:00:00' })
+            }
+            resolve({
+                success: true,
+                list
+            })
         })
     })
     return request({

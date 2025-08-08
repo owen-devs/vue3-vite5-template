@@ -1,9 +1,9 @@
 <template>
-    <div class="w-100% inline-flex overflow-hidden" ref="wrapper">
-        <div ref="inner" class="w-auto ws-nowrap break-keep inline-flex items-center">
+    <div class="wrapper-content-container" ref="wrapper">
+        <div ref="inner" class="inner-content-container">
             <component :is="item" v-for="(item, index) in commonBtns" :key="'comm_' + index" />
-            <el-dropdown v-if="isOvered && moreBtns.length > 0">
-                <span class="text-0.95em pl-10px hover:cursor-pointer more-btn">更多</span>
+            <el-dropdown v-if="isOvered">
+                <span class="more-btn">更多</span>
                 <template #dropdown>
                     <el-dropdown-menu>
                         <el-dropdown-item
@@ -25,41 +25,40 @@
  * @description:常用于table表格操作列按钮组，超出列宽自动出现[更多]下拉菜单
  */
 
-defineProps({
-    key: {
-        type: Object,
-        default: Date.now()
-    }
-})
-
-const wrapper = ref<HTMLElement | null>(null)
-const inner = ref<HTMLElement | null>(null)
+const wrapper = ref<HTMLElement>()
+const inner = ref<HTMLElement>()
 const slots: Readonly<any> = useSlots()
-const slotsNode = computed<VNode[]>(() =>
-    slots
-        ?.default()
-        ?.filter(
-            (node) =>
-                node &&
-                !isExcludeNode(node) &&
-                node.type.toString() !== 'Symbol(Comment)' &&
-                node.type.toString() !== 'Symbol()' &&
-                node.type.toString() !== 'Symbol(v-cmt)'
-        )
+const slotsNode = computed<VNode[]>(
+    () =>
+        slots
+            ?.default?.()
+            ?.filter(
+                (node) =>
+                    node &&
+                    !isExcludeNode(node) &&
+                    node.type.toString() !== 'Symbol(Comment)' &&
+                    node.type.toString() !== 'Symbol()' &&
+                    node.type.toString() !== 'Symbol(v-cmt)'
+            ) ?? []
 )
 
 const isExcludeNode = ({ props }: VNode) => {
     props = props || {}
-    const camelKebad = ['is-exclude', 'isExclude']
+    const camelKebad = ['is-exclude', 'isExclude', 'exclude']
     const hasKey = Object.keys(props).find((k) => camelKebad.includes(k))
     return !!hasKey && props[hasKey] !== false
 }
 
 const commonBtns = ref<VNode[]>([])
 const moreBtns = ref<VNode[]>([])
-const isOvered = ref<Boolean>(false)
+const isOvered = ref<Boolean>(true)
 
-const checkOvered = () => inner.value?.offsetWidth > wrapper.value?.offsetWidth
+const checkOvered = (): boolean => {
+    return (
+        inner.value?.getBoundingClientRect()?.width > wrapper.value?.getBoundingClientRect()?.width
+    )
+    // return inner.value?.offsetWidth > wrapper.value?.offsetWidth
+}
 
 const { width: wrapperWidth } = useElementSize(wrapper, { width: 0, height: 0 })
 const { width: innerWidth } = useElementSize(inner, { width: 0, height: 0 })
@@ -70,50 +69,18 @@ watchEffect(() => {
     }
 })
 
-const btnSplit = async () => {
+const btnSplit = () => {
     commonBtns.value = []
-    let moreLen = 0,
-        i = 0,
-        j = 0,
-        len = slotsNode.value.length
+    moreBtns.value = []
 
-    for (; i < len; i++) {
-        if (!slotsNode.value[i]) {
-            continue
-        }
-        commonBtns.value.push(slotsNode.value[i])
-        await nextTick()
-
-        if (checkOvered()) {
-            commonBtns.value.splice(-1, 1)
-            isOvered.value = true
-
+    commonBtns.value.push(...slotsNode.value)
+    nextTick(async () => {
+        while (checkOvered() && commonBtns.value.length > 0) {
+            moreBtns.value.unshift(commonBtns.value.pop()!)
             await nextTick()
-
-            moreLen = len - i + 1
-            j = i
-
-            if (checkOvered()) {
-                commonBtns.value.splice(-1, 1)
-                j = i - 1
-            }
-
-            break
         }
-    }
-
-    if (moreLen > 0) {
-        moreBtns.value = []
-        for (; j < len; j++) {
-            if (!slotsNode.value[j]) {
-                continue
-            }
-            moreBtns.value.push(slotsNode.value[j])
-        }
-        isOvered.value = true
-    } else {
-        isOvered.value = false
-    }
+        isOvered.value = moreBtns.value.length > 0
+    })
 }
 
 onMounted(() => {
@@ -122,6 +89,21 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
+.wrapper-content-container {
+    @apply w-100% inline-flex overflow-hidden;
+}
+.inner-content-container {
+    @apply w-auto ws-nowrap break-keep inline-flex items-center;
+}
+
+.more-btn {
+    @apply text-0.95em pl-10px cursor-pointer;
+    &:focus-visible {
+        outline: none;
+    }
+}
+</style>
+<style lang="scss">
 .operation-dropdown-list-item {
     padding: 0 16px;
 
@@ -132,11 +114,6 @@ onMounted(() => {
         text-align: left;
         margin: 0;
         justify-content: flex-start;
-    }
-}
-.more-btn {
-    &:focus-visible {
-        outline: none;
     }
 }
 </style>
