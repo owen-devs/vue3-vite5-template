@@ -51,13 +51,10 @@ const isExcludeNode = ({ props }: VNode) => {
 
 const commonBtns = ref<VNode[]>([])
 const moreBtns = ref<VNode[]>([])
-const isOvered = ref<Boolean>(true)
+const isOvered = ref<Boolean>(false)
 
 const checkOvered = (): boolean => {
-    return (
-        inner.value?.getBoundingClientRect()?.width > wrapper.value?.getBoundingClientRect()?.width
-    )
-    // return inner.value?.offsetWidth > wrapper.value?.offsetWidth
+    return inner.value?.offsetWidth > wrapper.value?.offsetWidth
 }
 
 const { width: wrapperWidth } = useElementSize(wrapper, { width: 0, height: 0 })
@@ -69,18 +66,50 @@ watchEffect(() => {
     }
 })
 
-const btnSplit = () => {
+const btnSplit = async () => {
     commonBtns.value = []
-    moreBtns.value = []
+    let moreLen = 0,
+        i = 0,
+        j = 0,
+        len = slotsNode.value.length
 
-    commonBtns.value.push(...slotsNode.value)
-    nextTick(async () => {
-        while (checkOvered() && commonBtns.value.length > 0) {
-            moreBtns.value.unshift(commonBtns.value.pop()!)
-            await nextTick()
+    for (; i < len; i++) {
+        if (!slotsNode.value[i]) {
+            continue
         }
-        isOvered.value = moreBtns.value.length > 0
-    })
+        commonBtns.value.push(slotsNode.value[i])
+        await nextTick()
+
+        if (checkOvered()) {
+            commonBtns.value.splice(-1, 1)
+            isOvered.value = true
+
+            await nextTick()
+
+            moreLen = len - i + 1
+            j = i
+
+            if (checkOvered()) {
+                commonBtns.value.splice(-1, 1)
+                j = i - 1
+            }
+
+            break
+        }
+    }
+
+    if (moreLen > 0) {
+        moreBtns.value = []
+        for (; j < len; j++) {
+            if (!slotsNode.value[j]) {
+                continue
+            }
+            moreBtns.value.push(slotsNode.value[j])
+        }
+        isOvered.value = true
+    } else {
+        isOvered.value = false
+    }
 }
 
 onMounted(() => {
