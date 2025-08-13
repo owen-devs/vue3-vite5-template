@@ -40,10 +40,11 @@
             <el-table-column prop="createTime" label="创建时间" min-width="150" />
             <el-table-column prop="updateTime" label="最近更新时间" min-width="150" />
             <el-table-column label="操作" width="180">
-                <template #default="{ row }">
+                <template #default="{ row, $index }">
                     <Operations :key="row.id">
                         <el-button type="primary" @click="editUser(row)" link>编辑</el-button>
                         <el-popconfirm
+                            v-if="$index % 2 === 0"
                             title="确定要删除用户?"
                             width="180"
                             confirm-button-text="确定"
