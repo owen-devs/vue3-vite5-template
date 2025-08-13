@@ -39,8 +39,9 @@ const getOneRowDisabled = (): boolean => {
     const { fontSize, fontFamily, fontWeight } = getComputedStyle(wrapper.value)
     const el = document.createElement('div')
     el.style = `position:absolute;
-                left:100px;
-                top:100px;
+                left:-99999px;
+                top:-99999x;
+                opacity:0;
                 white-space:nowrap;
                 word-break:keep-all;
                 font-size:${fontSize};
