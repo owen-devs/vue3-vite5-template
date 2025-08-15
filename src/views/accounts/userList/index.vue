@@ -1,5 +1,5 @@
 <template>
-    <div class="uset-list-container">
+    <div class="uset-list-container flex flex-col h-[calc(100vh-60px)]">
         <div class="flex justify-between items-center">
             <h4>用户管理列表</h4>
             <div class="">
@@ -25,55 +25,70 @@
                 </el-input>
             </div>
         </div>
-        <el-table
-            :data="tableData"
-            :header-cell-style="{ height: '56px', 'font-size': '16px' }"
-            style="width: 100%"
-            :cell-style="{ height: '56px', 'font-size': '16px' }"
-            v-loading="loading"
-        >
-            <el-table-column prop="name" label="姓名" min-width="100" />
-            <el-table-column prop="account" label="账号" min-width="150" />
-            <el-table-column prop="age" label="年龄" min-width="80" />
-            <el-table-column prop="gender" label="性别" :formatter="formatGender" min-width="80" />
-            <el-table-column prop="email" label="邮箱" min-width="150" />
-            <el-table-column prop="createTime" label="创建时间" min-width="150" />
-            <el-table-column prop="updateTime" label="最近更新时间" min-width="150" />
-            <el-table-column label="操作" width="180">
-                <template #default="{ row, $index }">
-                    <Operations :key="row.id">
-                        <el-button type="primary" @click="editUser(row)" link>编辑</el-button>
-                        <el-popconfirm
-                            v-if="$index % 2 === 0"
-                            title="确定要删除用户?"
-                            width="180"
-                            confirm-button-text="确定"
-                            cancel-button-text="取消"
-                            @confirm="() => deleteUserr(row)"
-                        >
-                            <template #reference>
-                                <el-button link>删除</el-button>
-                            </template>
-                        </el-popconfirm>
-                        <el-button link>测试</el-button>
-                        <el-button type="primary" link>测试长文字</el-button>
-                        <el-button link>测试3</el-button>
-                        <el-button type="primary" link>测试4</el-button>
-                    </Operations>
-                </template>
-            </el-table-column>
-        </el-table>
-        <el-pagination
-            class="mt-0.5em justify-end text-16px"
-            v-model:current-page="pageNo"
-            v-model:page-size="pageSize"
-            :page-sizes="[10, 20, 30, 50, 100]"
-            background
-            layout="total, sizes, prev, pager, next, jumper"
-            :total="total"
-            @size-change="sizeChange"
-            @current-change="currentChange"
-        />
+        <div class="flex-1 flex flex-col min-h-0">
+            <el-table
+                :data="tableData"
+                class="flex-1 min-h-0"
+                :header-cell-style="{ height: '56px', 'font-size': '16px' }"
+                style="width: 100%"
+                :cell-style="{ height: '56px', 'font-size': '16px' }"
+                height="100%"
+                v-loading="loading"
+            >
+                <el-table-column label="序号" type="index" width="80"></el-table-column>
+                <el-table-column prop="name" label="姓名" min-width="110">
+                    <template #default="{ row }">
+                        <AutoTooltips :text="row.name" />
+                    </template>
+                </el-table-column>
+                <el-table-column prop="account" label="账号" min-width="150" />
+                <el-table-column prop="age" label="年龄" min-width="80" />
+                <el-table-column
+                    prop="gender"
+                    label="性别"
+                    :formatter="formatGender"
+                    min-width="80"
+                />
+                <el-table-column prop="email" label="邮箱" min-width="150" />
+                <el-table-column prop="createTime" label="创建时间" min-width="150" />
+                <el-table-column prop="updateTime" label="最近更新时间" min-width="150" />
+                <el-table-column label="操作" width="180">
+                    <template #default="{ row, $index }">
+                        <Operations :key="row.id">
+                            <el-button type="primary" @click="editUser(row)" link>编辑</el-button>
+                            <el-popconfirm
+                                v-if="$index % 2 === 0"
+                                title="确定要删除用户?"
+                                width="180"
+                                confirm-button-text="确定"
+                                cancel-button-text="取消"
+                                @confirm="() => deleteUserr(row)"
+                            >
+                                <template #reference>
+                                    <el-button link>删除</el-button>
+                                </template>
+                            </el-popconfirm>
+                            <el-button link>测试</el-button>
+                            <el-button type="primary" link>测试长文字</el-button>
+                            <el-button link>测试3</el-button>
+                            <el-button type="primary" link>测试4</el-button>
+                        </Operations>
+                    </template>
+                </el-table-column>
+            </el-table>
+            <el-pagination
+                class="my-1em justify-end text-16px"
+                v-model:current-page="pageNo"
+                v-model:page-size="pageSize"
+                :page-sizes="[10, 20, 30, 50, 100]"
+                background
+                layout="total, sizes, prev, pager, next, jumper"
+                :total="total"
+                @size-change="sizeChange"
+                @current-change="currentChange"
+            />
+        </div>
+
         <AddUser
             v-if="showAddUser"
             :type="type"

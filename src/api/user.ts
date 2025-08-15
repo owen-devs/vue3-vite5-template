@@ -16,13 +16,26 @@ export function getUserInfo(params: IterableObject): Promise<any> {
 export function getUserListByPage(params: IterableObject, data: IterableObject): Promise<any> {
     return new Promise((resolve) => {
         setTimeout(() => {
+            function randomText(length) {
+                const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+                let result = ''
+                for (let i = 0; i < length; i++) {
+                    result += chars.charAt(Math.floor(Math.random() * chars.length))
+                }
+                return result
+            }
             let list = []
             for (let i = 0; i < params.pageSize; i++) {
-                list.push({ id: i, name: `测试名称${i}`, createTime: '2025-01-01 12:00:00' })
+                list.push({
+                    id: i,
+                    name: `测试名称-${randomText(i + 5)}`,
+                    createTime: '2025-01-01 12:00:00'
+                })
             }
             resolve({
                 success: true,
-                list
+                list,
+                total: list.length
             })
         })
     })

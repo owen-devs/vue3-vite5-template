@@ -1,15 +1,10 @@
 <template>
-    <el-scrollbar
-        class="main-scroll-bar animate__animated animate__slideInUp"
-        max-height="calc(100vh - 60px)"
-    >
+    <el-scrollbar class="main-scroll-bar animate__animated animate__slideInUp" height="100%">
         <router-view v-slot="{ Component, route }">
             <transition>
-                <div v-show="true">
-                    <keep-alive>
-                        <component :key="route.fullPath" :is="Component" />
-                    </keep-alive>
-                </div>
+                <keep-alive>
+                    <component :key="route.fullPath" :is="Component" />
+                </keep-alive>
             </transition>
         </router-view>
     </el-scrollbar>

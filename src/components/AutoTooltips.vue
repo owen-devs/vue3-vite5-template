@@ -1,14 +1,17 @@
 <template>
     <div v-if="props.text" class="w-full overflow-hidden">
-        <el-tooltip placement="top" :content="props.text" :disabled="finalDisabled" v-bind="$attrs">
+        <el-tooltip
+            placement="top"
+            :content="props.text"
+            :disabled="computedDisabled"
+            v-bind="$attrs"
+        >
             <div
                 class="w-full"
-                :class="
-                    [
-                        $attrs.class,
-                        { truncate: !props.rows || props.rows === 1, 'multi-lines': props.rows > 1 }
-                    ].concat(props.classNames)
-                "
+                :class="[
+                    { truncate: !props.rows || props.rows === 1, 'multi-lines': props.rows > 1 },
+                    ...props.classNames
+                ]"
                 ref="wrapper"
                 v-html="props.text"
             ></div>
@@ -33,48 +36,35 @@ const props = defineProps({
 
 const wrapper = ref()
 const isDisabled = ref(true)
-const finalDisabled = computed(() => !props.text || isDisabled.value)
-
-const getOneRowDisabled = (): boolean => {
-    const { fontSize, fontFamily, fontWeight } = getComputedStyle(wrapper.value)
-    const el = document.createElement('div')
-    el.style = `position:absolute;
-                left:-99999px;
-                top:-99999x;
-                opacity:0;
-                white-space:nowrap;
-                word-break:keep-all;
-                font-size:${fontSize};
-                font-family:${fontFamily};
-                font-weight:${fontWeight};`
-
-    el.innerHTML = props.text || ''
-    document.body.appendChild(el)
-    const realWidth = el.getBoundingClientRect()?.width
-    const visibleWidth = wrapper.value.getBoundingClientRect()?.width
-    document.body.removeChild(el)
-    return realWidth <= visibleWidth
-}
+const computedDisabled = computed(() => !props.text || isDisabled.value)
 
 const setDisabled = () => {
     isDisabled.value =
         !props.rows || props.rows === 1
             ? getOneRowDisabled()
-            : wrapper.value.offsetHeight >= wrapper.value.scrollHeight
+            : wrapper.value?.offsetHeight >= wrapper.value?.scrollHeight
+}
+
+const getOneRowDisabled = () => {
+    if (!wrapper.value) return true
+    const range = document.createRange()
+    range.selectNodeContents(wrapper.value)
+    const { width: realWidth } = range.getBoundingClientRect()
+    const { width: panelWidth } = wrapper.value.getBoundingClientRect()
+
+    return realWidth <= panelWidth
 }
 
 const { width: wrapperWidth, height: wrapperHeight } = useElementSize(wrapper)
 
 watchEffect(() => {
-    if (wrapperWidth.value && wrapperHeight.value) {
-        doSetDisabled()
+    if (wrapperWidth.value && wrapperHeight.value && props.text) {
+        setDisabled()
     }
 })
 
-const doSetDisabled = useDebounceFn(setDisabled, 10)
-
 onUpdated(() => {
-    doSetDisabled()
+    setDisabled()
 })
 </script>
 <style lang="scss" scoped>

@@ -1,3 +1,7 @@
 @use './dark/' as *;
 @use './default/' as *;
 @use './vue/' as *;
+
+.el-main {
+    padding: 0 20px;
+}
