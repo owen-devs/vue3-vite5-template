@@ -1,5 +1,6 @@
 <template>
     <div>请看控制台打印</div>
+    <div>arrange('链式调用等待').waitFirst(3000).doSome().wait(5000).execute()</div>
 </template>
 <script lang="ts" setup>
 //链式调用和延迟执行
