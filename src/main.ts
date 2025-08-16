@@ -25,6 +25,7 @@ const directivesRegister = () => {
     })
 }
 const start = () => {
+    useTheme().setTheme(useLocalStorage('theme', '').value) //同步主题
     directivesRegister()
     app.mount('#app')
 }

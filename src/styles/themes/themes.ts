@@ -50,3 +50,15 @@ export const themes = {
         }
     }
 }
+
+export function getCurrentThemeSafeList(): string[] {
+    let allColors: string[] = []
+    Object.values(themes).forEach((v) => {
+        Object.keys(v.colors).forEach((c) => {
+            if (!allColors.includes(`c-${c}`)) {
+                allColors.push(`c-${c}`)
+            }
+        })
+    })
+    return allColors
+}

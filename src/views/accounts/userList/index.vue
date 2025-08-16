@@ -65,10 +65,10 @@
                                 @confirm="() => deleteUserr(row)"
                             >
                                 <template #reference>
-                                    <el-button link>删除</el-button>
+                                    <el-button type="danger" link>删除</el-button>
                                 </template>
                             </el-popconfirm>
-                            <el-button link>测试</el-button>
+                            <el-button class="c-base0" link>测试</el-button>
                             <el-button type="primary" link>测试长文字</el-button>
                             <el-button link>测试3</el-button>
                             <el-button type="primary" link>测试4</el-button>

@@ -1,7 +1,7 @@
 :root.vue {
     --el-color-primary: theme('colors.base');
-    --el-color-primary-light-3: #32b883;
-    --el-color-primary-dark-2: #32b883;
+    --el-color-primary-light-3: theme('colors.base0');
+    --el-color-primary-dark-2: theme('colors.base0');
     --el-color-primary-light-9: theme('colors.bg2');
     --el-color-primary-light-7: theme('colors.darkc5');
 
@@ -15,6 +15,8 @@
 
     .el-button--primary {
         --el-button-border-color: theme('colors.darkc5');
-        --el-button-hover-link-text-color: #32b883;
+        --el-button-hover-link-text-color: theme('colors.base0');
+        --el-button-hover-border-color: theme('colors.base0');
+        --el-button-hover-color: theme('colors.base0');
     }
 }

@@ -1,5 +1,5 @@
 <template>
-    <div class="flex items-center !py-0.5em !px-20px h-60px">
+    <div class="flex items-center bg-sidebar !py-0.5em !px-20px h-60px">
         <div class="flex pr-10px">
             <i class="flex-inline w-1.4em h-1.4em c-base">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">

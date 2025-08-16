@@ -3,15 +3,14 @@ import {
     presetAttributify,
     presetIcons,
     presetTypography,
-    presetUno,
     presetWebFonts,
     transformerDirectives,
     transformerVariantGroup
 } from 'unocss'
-import type { Theme } from 'unocss/preset-uno'
-import { presetTheme } from 'unocss-preset-theme'
+import presetWind3 from '@unocss/preset-wind3'
+import presetTheme from 'unocss-preset-theme'
 
-import { themes } from './src/styles/themes/themes'
+import { themes, getCurrentThemeSafeList } from './src/styles/themes/themes'
 import { dynamicIcons } from './src/styles/dynamicIcons'
 
 export default defineConfig({
@@ -19,7 +18,7 @@ export default defineConfig({
         'keep-all': 'ws-nowrap break-keep',
         'text-exceed': 'truncate break-keep'
     },
-    safelist: [...dynamicIcons],
+    safelist: [...dynamicIcons, ...getCurrentThemeSafeList()],
     theme: {
         font: {
             base: '16px',
@@ -54,7 +53,7 @@ export default defineConfig({
         ]
     ],
     presets: [
-        presetUno(),
+        presetWind3(),
         presetAttributify(),
         presetIcons(),
         presetTypography(),
@@ -63,15 +62,11 @@ export default defineConfig({
                 // ...
             }
         }),
-        // presetTheme<Theme>({
-        //     theme: themes,
-        //     prefix: '--un-theme',
-        //     selectors: {
-        //         default: '.default',
-        //         vue: '.vue'
-        //     }
-        // })
-        presetTheme<Theme>({ theme: themes })
+        presetTheme({
+            theme: themes,
+            prefix: '--un-theme',
+            selectors: { default: ':root.default', vue: ':root.vue' }
+        })
     ],
     transformers: [transformerDirectives(), transformerVariantGroup()]
 })
