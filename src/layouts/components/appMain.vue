@@ -2,9 +2,11 @@
     <el-scrollbar class="main-scroll-bar animate__animated animate__slideInUp" height="100%">
         <router-view v-slot="{ Component, route }">
             <transition>
-                <keep-alive>
-                    <component :key="route.fullPath" :is="Component" />
-                </keep-alive>
+                <div class="h-full">
+                    <keep-alive>
+                        <component :key="route.fullPath" :is="Component" />
+                    </keep-alive>
+                </div>
             </transition>
         </router-view>
     </el-scrollbar>
