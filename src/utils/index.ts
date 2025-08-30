@@ -170,11 +170,7 @@ export function singleton(fn: Function) {
 export function createOverload() {
     const fnMap = new Map<string, Function>()
     function overload(...args: any[]) {
-        const key = args
-            .map((it) => {
-                typeof it
-            })
-            .join(',')
+        const key = args.map((it) => typeof it).join(',')
         const fn = fnMap.get(key)
         if (fn) {
             throw new Error('没有找到对应的实现')
@@ -184,7 +180,7 @@ export function createOverload() {
 
     overload.add = function (...args: any[]) {
         const fn = args.pop()
-        if (typeof fn != 'function') {
+        if (typeof fn !== 'function') {
             throw new Error('最后一个参数必须是函数')
         }
 
