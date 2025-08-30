@@ -165,6 +165,11 @@ export function singleton(fn: Function) {
 
 /**
  * 函数重载
+ * @example
+ * const overload = createOverload()
+ * overload.add('string', (arg: string) => { console.log('string', arg) })
+ * overload.add('number','string', (arg1: number, arg2: string) => { console.log('number,string', arg1, arg2) })
+ * @returns {Function} 重载函数
  */
 
 export function createOverload() {
