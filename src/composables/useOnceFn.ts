@@ -2,7 +2,7 @@ class Once {
     res: any
     isFetching: boolean
     isSuccess: boolean
-    queues: any[]
+    queues: Function[]
     constructor() {
         this.res = null
         this.isFetching = false
@@ -11,14 +11,14 @@ class Once {
     }
     useOnceFn(funcName: Function, ...funcParams: any[]): Promise<any> {
         return new Promise(async (resolve, reject) => {
-            if (this.isSuccess && this.res) {
+            if (this.isSuccess) {
                 resolve(this.res)
                 return
             }
             this.queues.push(resolve)
             if (!this.isFetching) {
                 this.isFetching = true
-                this.res = (await funcName(...funcParams)) || {}
+                this.res = await funcName(...funcParams)
                 this.loopQueues()
                 this.isSuccess = true
             }
@@ -27,12 +27,12 @@ class Once {
     loopQueues() {
         while (this.queues.length > 0) {
             const callback = this.queues.shift()
-            callback(this.res)
+            callback?.(this.res)
         }
     }
 }
 
-const onceInstancePools: IterableObject = {}
+const onceInstancePools: Record<string, Once> = {}
 
 /**
  * 防止接口重复请求的方法<需保证方法名全局唯一>
@@ -58,8 +58,11 @@ const onceInstancePools: IterableObject = {}
  * @returns {Promise<any>}
  */
 export function useOnceFn(funcName: Function, ...funcParams: any[]): Promise<any> {
-    if (!onceInstancePools[funcName.name]) {
-        onceInstancePools[funcName.name] = new Once()
+    if (!onceInstancePools[funcName.toString().replace(/[^a-zA-Z]/g, '')]) {
+        onceInstancePools[funcName.toString().replace(/[^a-zA-Z]/g, '')] = new Once()
     }
-    return onceInstancePools[funcName.name].useOnceFn(funcName, ...funcParams)
+    return onceInstancePools[funcName.toString().replace(/[^a-zA-Z]/g, '')].useOnceFn(
+        funcName,
+        ...funcParams
+    )
 }
