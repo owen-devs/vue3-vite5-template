@@ -58,11 +58,9 @@ const onceInstancePools: Record<string, Once> = {}
  * @returns {Promise<any>}
  */
 export function useOnceFn(funcName: Function, ...funcParams: any[]): Promise<any> {
-    if (!onceInstancePools[funcName.toString().replace(/[^a-zA-Z]/g, '')]) {
-        onceInstancePools[funcName.toString().replace(/[^a-zA-Z]/g, '')] = new Once()
+    const keyName = funcName.toString().replace(/[^a-zA-Z]/g, '')
+    if (!onceInstancePools[keyName]) {
+        onceInstancePools[keyName] = new Once()
     }
-    return onceInstancePools[funcName.toString().replace(/[^a-zA-Z]/g, '')].useOnceFn(
-        funcName,
-        ...funcParams
-    )
+    return onceInstancePools[keyName].useOnceFn(funcName, ...funcParams)
 }
