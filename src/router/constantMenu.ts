@@ -111,6 +111,18 @@ export const menus = [
                 title: '二级示例页2-没下级'
             }
         ]
+    },
+    {
+        path: '/directives',
+        title: '指令使用案例',
+        icon: 'i-ph-dots-three-circle-vertical-fill',
+        children: [
+            {
+                path: '/directivesDemo/vResizable',
+                title: '可拉伸指令',
+                icon: 'i-ph-dots-three-circle-vertical-fill'
+            }
+        ]
     }
 ]
 
