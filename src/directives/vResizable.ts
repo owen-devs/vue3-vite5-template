@@ -55,7 +55,7 @@ function ensureStyles() {
   z-index: 9999;
   user-select: none;
   touch-action: none;
-  opacity: 1;
+  opacity: 0;
 }
 .${HANDLE_CLASS}::after {
   content: '';
